@@ -1,16 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from "astro:content";
-
-const postEntries = await getCollection("post");
 ---
 
 <Layout title="Welcome to Astro.">
-  {
-    postEntries.map((entry) => (
-      <div>
-        <a href={`/posts/${entry.slug}`}>{entry.data.title}</a>
-      </div>
-    ))
-  }
+  <h1>Main Page</h1>
 </Layout>

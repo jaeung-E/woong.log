@@ -1,13 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import PostItem from "@components/PostItem";
+import PostList from "@components/PostList";
 
 const postEntries = await getCollection("post");
 ---
 
 <Layout title="Post List">
-  <div class="divide-y divide-solid divide-black">
-    {postEntries.map((entry) => <PostItem post={entry} />)}
-  </div>
+  <PostList posts={postEntries} />
 </Layout>

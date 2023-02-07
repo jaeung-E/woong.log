@@ -1,18 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import PostItem from "@components/PostItem";
 
 const postEntries = await getCollection("post");
 ---
 
 <Layout title="Post List">
-  <div>
-    {
-      postEntries.map((entry) => (
-        <div>
-          <a href={`/posts/${entry.slug}`}>{entry.data.title}</a>
-        </div>
-      ))
-    }
+  <div class="divide-y divide-solid divide-black">
+    {postEntries.map((entry) => <PostItem post={entry} />)}
   </div>
 </Layout>

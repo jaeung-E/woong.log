@@ -16,15 +16,15 @@ const currentPath = pathname.split("/")[1];
         {
           navigationItems.map((item) => (
             <a href={`/${item.toLowerCase()}`}>
-              <li
-                class={`mx-3 my-5 duration-300 hover:opacity-100 ${
+              <div
+                class={`px-3 py-5 duration-300 hover:opacity-100 ${
                   currentPath === item.toLowerCase()
                     ? "opacity-100"
                     : "opacity-30"
                 }`}
               >
-                {item}
-              </li>
+                <li>{item}</li>
+              </div>
             </a>
           ))
         }

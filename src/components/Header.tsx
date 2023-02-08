@@ -1,20 +1,21 @@
 function Header() {
+  const navigationItems = ["Posts", "Tags"];
+
   return (
     <header>
       <div className="flex justify-between items-center sm:w-full">
-        <div>
+        <div className="text-2xl text-bold">
           <a href="/">
             <h1>Woong.log</h1>
           </a>
         </div>
         <nav>
           <ul className="flex">
-            <a href="/posts">
-              <li className="mx-3 my-5">Posts</li>
-            </a>
-            <a href="/tags">
-              <li className="mx-3 my-5">Tags</li>
-            </a>
+            {navigationItems.map((item) => (
+              <a href={`/${item.toLowerCase()}`}>
+                <li className="mx-3 my-5">{item}</li>
+              </a>
+            ))}
           </ul>
         </nav>
       </div>

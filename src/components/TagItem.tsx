@@ -11,7 +11,7 @@ function TagItem({ name, isSelected = false, isActivate = false }: Props) {
     <div>
       <ConditionalLink link={isActivate ? `/tags/${name}` : ""}>
         <div
-          className={`inline rounded-full text-sm p-1 border-solid border-black border ${
+          className={`inline rounded-full text-sm px-3 py-1 border-solid border-slate-400 border ${
             isSelected ? " bg-green-400" : ""
           } ${
             isActivate

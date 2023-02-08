@@ -7,7 +7,7 @@ interface Props {
 
 function TagList({ tags, isActivate = false }: Props) {
   return (
-    <div>
+    <div className="flex flex-wrap justify-center gap-x-2 gap-y-4">
       {tags.map((tag) => (
         <TagItem name={tag} isActivate={isActivate} />
       ))}

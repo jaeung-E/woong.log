@@ -1,7 +1,5 @@
 ---
 const navigationItems = ["Posts"];
-const { pathname } = new URL(Astro.request.url);
-const currentPath = pathname.split("/")[1];
 ---
 
 <header>
@@ -16,13 +14,7 @@ const currentPath = pathname.split("/")[1];
         {
           navigationItems.map((item) => (
             <a href={`/${item.toLowerCase()}`}>
-              <div
-                class={`px-3 py-5 duration-300 hover:opacity-100 ${
-                  currentPath === item.toLowerCase()
-                    ? "opacity-100"
-                    : "opacity-30"
-                }`}
-              >
+              <div class={`px-3 py-5`}>
                 <li>{item}</li>
               </div>
             </a>

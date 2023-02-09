@@ -9,7 +9,7 @@ function PostItem({ post }: Props) {
   const { title, description, thumbnail } = post.data;
 
   return (
-    <div className="py-4 hover:text-blue-400">
+    <div className="py-4 transition-colors duration-300 hover:text-blue-400">
       <a href={`/posts/${slug}`}>
         <div className="grid grid-cols-12">
           <div className="col-span-3 col-start-1 row-start-1 row-end-3">

@@ -1,16 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import TagList from "@components/TagList.astro";
 import PostList from "@components/PostList";
 
-const postEntries = await getCollection("post");
-const allTags = [...new Set(postEntries.flatMap((entry) => entry.data.tags))];
-const { pathname } = new URL(Astro.request.url);
-const selectedTag = decodeURI(pathname.split("/")[2]);
-const filterPosts = await getCollection("post", ({ data }) => {
-  return data.tags.includes(selectedTag);
-});
+interface Props {
+  postEntries: CollectionEntry<"post">[];
+}
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("post");
@@ -19,8 +15,17 @@ export async function getStaticPaths() {
     .flatMap(({ data }) => data.tags)
     .map((tag) => ({
       params: { slug: tag },
+      props: { postEntries },
     }));
 }
+
+const { postEntries } = Astro.props;
+const allTags = [...new Set(postEntries.flatMap((entry) => entry.data.tags))];
+const { pathname } = new URL(Astro.request.url);
+const selectedTag = decodeURI(pathname.split("/")[2]);
+const filterPosts = await getCollection("post", ({ data }) => {
+  return data.tags.includes(selectedTag);
+});
 ---
 
 <Layout title={selectedTag}>

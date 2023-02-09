@@ -29,7 +29,7 @@ function TagItem({ name, isSelected = false, isActivate = false }: Props) {
             {name}
           </span>
           {isSelected && (
-            <button onClick={handleClick} className="ml-1">
+            <button onClick={handleClick} className="ml-1 -mr-2">
               <img
                 src="/assets/icon/close.svg"
                 alt="close"

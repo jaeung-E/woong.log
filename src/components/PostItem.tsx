@@ -12,16 +12,16 @@ function PostItem({ post }: Props) {
     <div className="py-4">
       <a href={`/posts/${slug}`}>
         <div className="grid grid-cols-12">
-          <h1 className="col-span-9">{title}</h1>
-          <div className="col-span-9">
-            <p>{description}</p>
-          </div>
-          <div className="col-span-3 col-start-10 row-start-1 row-end-3">
+          <div className="col-span-3 col-start-1 row-start-1 row-end-3">
             <img
               src={`${thumbnail}`}
               alt="thumbnail"
-              className="object-cover h-24"
+              className="object-cover w-full h-full"
             />
+          </div>
+          <h1 className="col-span-9 col-start-5 text-2xl font-bold">{title}</h1>
+          <div className="col-span-9 col-start-5 py-4">
+            <p className="break-words overflow-hidden h-12">{description}</p>
           </div>
         </div>
       </a>

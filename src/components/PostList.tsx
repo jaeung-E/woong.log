@@ -9,7 +9,7 @@ function PostList({ posts }: Props) {
   return (
     <div className="divide-y divide-solid divide-black">
       {posts.map((post) => (
-        <PostItem post={post} />
+        <PostItem post={post} key={post.data.id} />
       ))}
     </div>
   );

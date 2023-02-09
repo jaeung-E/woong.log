@@ -1,4 +1,5 @@
 ---
+id: 1
 title: My First Post
 description: deszxdzxd
 thumbnail: /assets/image/post-1/thumbnail.jpg

@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import ConditionalLink from "./ConditionalLink";
+import ConditionalLink from "@components/ConditionalLink";
 
 interface Props {
   name: string;

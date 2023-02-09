@@ -7,7 +7,7 @@ interface Props {
 
 function PostList({ posts }: Props) {
   return (
-    <div className="divide-y divide-solid divide-black mt-12">
+    <div className="divide-y divide-solid divide-slate-300 mt-12">
       {posts.map((post) => (
         <PostItem post={post} key={post.data.id} />
       ))}

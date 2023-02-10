@@ -12,18 +12,24 @@ module.exports = {
               borderRadius: "0.2rem",
               fontWeight: "400",
               backgroundColor: theme("colors.stone[200]"),
-            },
-            "code::before": {
-              content: "none",
-            },
-            "code::after": {
-              content: "none",
+              "&::before": {
+                content: "none !important",
+              },
+              "&::after": {
+                content: "none !important",
+              },
             },
             "blockquote p:first-of-type::before": {
               content: "none",
             },
             "blockquote p:last-of-type::after": {
               content: "none",
+            },
+            a: {
+              textDecoration: "none",
+              "&:hover": {
+                color: theme("colors.blue[400]"),
+              },
             },
           },
         },

@@ -3,9 +3,16 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
-      typography: {
+      typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            code: {
+              margin: "0.2rem",
+              padding: "0.1rem 0.25rem",
+              borderRadius: "0.2rem",
+              fontWeight: "400",
+              backgroundColor: theme("colors.stone[200]"),
+            },
             "code::before": {
               content: "none",
             },
@@ -20,7 +27,7 @@ module.exports = {
             },
           },
         },
-      },
+      }),
     },
   },
   plugins: [require("@tailwindcss/typography")],

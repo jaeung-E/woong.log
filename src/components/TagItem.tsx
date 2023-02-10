@@ -1,5 +1,6 @@
 import type { MouseEvent } from "react";
 import ConditionalLink from "@components/ConditionalLink";
+import { ReactComponent as CloseIcon } from "@icon/close.svg";
 
 interface Props {
   name: string;
@@ -29,12 +30,11 @@ function TagItem({ name, isSelected = false, isActivate = false }: Props) {
             {name}
           </span>
           {isSelected && (
-            <button onClick={handleClick} className="ml-1 -mr-2">
-              <img
-                src="/assets/icon/close.svg"
-                alt="close"
-                className="opacity-30 hover:opacity-100"
-              />
+            <button
+              onClick={handleClick}
+              className="ml-1 -mr-2 opacity-30 hover:opacity-100"
+            >
+              <CloseIcon />
             </button>
           )}
         </div>

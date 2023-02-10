@@ -19,11 +19,14 @@ module.exports = {
                 content: "none !important",
               },
             },
-            "blockquote p:first-of-type::before": {
-              content: "none",
-            },
-            "blockquote p:last-of-type::after": {
-              content: "none",
+            blockquote: {
+              borderLeftColor: theme("colors.blue[400]"),
+              "p:first-of-type::before": {
+                content: "none",
+              },
+              "p:last-of-type::after": {
+                content: "none",
+              },
             },
             a: {
               textDecoration: "none",

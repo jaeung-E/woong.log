@@ -10,7 +10,7 @@ interface Props {
 function TagItem({ name, isSelected = false, isActivate = false }: Props) {
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    location.replace("/posts");
+    location.replace("/");
   };
 
   return (

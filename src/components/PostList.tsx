@@ -6,9 +6,15 @@ interface Props {
 }
 
 function PostList({ posts }: Props) {
+  const sortedPosts = posts.sort(
+    (a, b) =>
+      new Date(b.data.createDate).getTime() -
+      new Date(a.data.createDate).getTime()
+  );
+
   return (
     <div className="divide-y divide-solid divide-slate-300 mt-12">
-      {posts.map((post) => (
+      {sortedPosts.map((post) => (
         <PostItem post={post} key={post.data.id} />
       ))}
     </div>

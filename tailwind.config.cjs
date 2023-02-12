@@ -6,6 +6,9 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            h1: {
+              paddingTop: "5rem",
+            },
             code: {
               margin: "0.2rem",
               padding: "0.1rem 0.25rem",

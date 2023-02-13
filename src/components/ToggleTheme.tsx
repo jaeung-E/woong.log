@@ -8,7 +8,7 @@ function ToggleTheme() {
 
   useEffect(() => {
     const getTheme = () => {
-      if (storedTheme) {
+      if (storedTheme !== null) {
         return storedTheme;
       }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getStorage, updateStorage } from "src/utils/storage";
+import { getStorage, updateStorage } from "@utils/storage";
 
 function ToggleTheme() {
   const [toggle, setToggle] = useState(false);

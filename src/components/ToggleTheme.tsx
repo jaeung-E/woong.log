@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { updateStorage } from "@utils/storage";
 import { getTheme } from "@utils/theme";
+import { ReactComponent as Moon } from "@icon/dark_mode.svg";
+import { ReactComponent as Sun } from "@icon/light_mode.svg";
 
 function ToggleTheme() {
   const [toggle, setToggle] = useState(false);
@@ -37,7 +39,9 @@ function ToggleTheme() {
           className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
             toggle ? `translate-x-[calc(100%+0.75rem)]` : ""
           }`}
-        ></div>
+        >
+          {toggle ? <Moon className="w-6 h-6" /> : <Sun className="w-6 h-6" />}
+        </div>
       </div>
     </>
   );

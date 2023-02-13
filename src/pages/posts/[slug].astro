@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import TagList from "@components/TagList.astro";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("post");
@@ -16,8 +17,18 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={entry.data.title}>
+  <div
+    class="flex flex-col gap-12 justify-between min-h-[13rem] p-4 border-b mb-24"
+  >
+    <h1 class="text-4xl">{entry.data.title}</h1>
+    <div class="flex justify-between items-center">
+      <TagList tags={entry.data.tags} isActivate class="!justify-start" />
+      <span class="text-gray-400"
+        >{entry.data.createDate.toLocaleDateString("ko-KR")}</span
+      >
+    </div>
+  </div>
   <div class="prose max-w-none prose-hr:my-4 prose-h1:mb-0">
-    <h1>{entry.data.title}</h1>
     <Content />
   </div>
 </Layout>

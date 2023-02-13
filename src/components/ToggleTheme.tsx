@@ -1,22 +1,12 @@
 import { useEffect, useState } from "react";
-import { getStorage, updateStorage } from "@utils/storage";
+import { updateStorage } from "@utils/storage";
+import { getTheme } from "@utils/theme";
 
 function ToggleTheme() {
   const [toggle, setToggle] = useState(false);
   const html = document.documentElement;
-  const storedTheme = getStorage("theme", "");
 
   useEffect(() => {
-    const getTheme = () => {
-      if (storedTheme !== null) {
-        return storedTheme;
-      }
-
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "";
-    };
-
     const currentTheme = getTheme();
 
     if (currentTheme === "dark") {

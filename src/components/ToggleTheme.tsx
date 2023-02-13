@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { getStorage, updateStorage } from "src/utils/storage";
 
 function ToggleTheme() {
   const [toggle, setToggle] = useState(false);
   const html = document.documentElement;
-  const localStorage = window.localStorage;
-  const storedTheme = localStorage.getItem("theme");
+  const storedTheme = getStorage("theme", "");
 
   useEffect(() => {
     const getTheme = () => {
@@ -26,13 +26,13 @@ function ToggleTheme() {
       html.classList.remove("dark");
     }
 
-    localStorage.setItem("theme", currentTheme);
+    updateStorage("theme", currentTheme);
   }, []);
 
   const handleToggle = () => {
     html.classList.toggle("dark");
     setToggle((toggle) => !toggle);
-    localStorage.setItem("theme", toggle ? "" : "dark");
+    updateStorage("theme", toggle ? "" : "dark");
   };
 
   return (

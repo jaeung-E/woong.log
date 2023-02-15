@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    font-family: "Spoqa Han Sans Neo", "sans-serif";
+  }
+
   .dark {
     --color-bg-body: 25 25 25;
     --color-text-body: 245 245 245;

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .dark {
+    --color-bg-body: 25 25 25;
+    --color-text-body: 245 245 245;
+    --color-prose-body: 190 190 190;
+  }
+
+  :root {
+    background-color: theme("colors.bg.body");
+    color: theme("colors.text.body");
+  }
+}

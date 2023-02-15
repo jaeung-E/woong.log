@@ -4,9 +4,22 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        bg: {
+          body: "rgb(var(--color-bg-body) / <alpha-value>)",
+        },
+        text: {
+          body: "rgb(var(--color-text-body) / <alpha-value>)",
+        },
+      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            "--tw-prose-body": "rgb(var(--color-prose-body))",
+            "--tw-prose-headings": "rgb(var(--color-text-body))",
+            "--tw-prose-links": "rgb(var(--color-text-body))",
+            "--tw-prose-bold": "rgb(var(--color-text-body))",
+            "--tw-prose-quotes": "rgb(var(--color-text-body))",
             h1: {
               paddingTop: "5rem",
             },

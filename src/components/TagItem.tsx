@@ -19,14 +19,14 @@ function TagItem({ name, isSelected = false, isActivate = false }: Props) {
       <ConditionalLink link={isActivate ? `/tags/${name}` : ""}>
         <div
           className={`flex rounded-full text-sm px-3 py-1 border-solid border-slate-400 border ${
-            isSelected ? "bg-blue-100" : ""
+            isSelected ? "bg-blue-100 dark:text-black" : ""
           } ${
             !isSelected && isActivate
-              ? "hover:bg-slate-100 transition-colors duration-300"
+              ? "hover:bg-slate-100 transition-colors duration-300 dark:hover:text-black"
               : ""
           }`}
         >
-          <span className={`${isActivate ? "" : "cursor-default"}`}>
+          <span className={`${isActivate ? "" : "cursor-default"} `}>
             {name}
           </span>
           {isSelected && (

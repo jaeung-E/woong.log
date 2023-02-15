@@ -5,9 +5,15 @@ import { ReactComponent as Sun } from "@icon/light_mode.svg";
 
 <div
   id="toggle"
-  class="flex items-center p-0.5 cursor-pointer w-16 h-7 rounded-full dark:bg-black bg-blue-400"
+  class="relative flex justify-between items-center p-0.5 cursor-pointer w-12 h-6 rounded-full bg-stone-200 dark:bg-blue-900"
 >
-  <div id="toggle-circle" class="invisible w-6 h-6 bg-white rounded-full"></div>
+  <Sun className="fill-yellow-400" />
+  <Moon className="fill-blue-400" />
+  <div
+    id="toggle-circle"
+    class="absolute top-0.5 left-0.5 invisible w-5 h-5 rounded-full bg-yellow-400 dark:bg-blue-400 dark:translate-x-6"
+  >
+  </div>
 </div>
 
 <script>
@@ -18,10 +24,6 @@ import { ReactComponent as Sun } from "@icon/light_mode.svg";
   const $circle = $toggle?.querySelector("#toggle-circle");
   let isDark = $html.classList.contains("dark");
 
-  if (isDark) {
-    $circle?.classList.add("dark");
-  }
-
   $circle?.classList.remove("invisible");
   $toggle?.addEventListener("click", handleToggle);
 
@@ -31,29 +33,9 @@ import { ReactComponent as Sun } from "@icon/light_mode.svg";
         $circle.classList.add("duration-300");
       }
 
-      if (isDark) {
-        $circle.classList.add("light");
-        $circle.classList.remove("dark");
-      } else {
-        $circle.classList.add("dark");
-        $circle.classList.remove("light");
-      }
-
       isDark = !isDark;
       $html.classList.toggle("dark");
       updateStorage("theme", isDark ? "dark" : "");
     }
   }
 </script>
-
-<style>
-  .light {
-    transform: translateX(0);
-    background-color: white;
-  }
-
-  .dark {
-    transform: translateX(calc(100% + 0.75rem));
-    background-color: white;
-  }
-</style>

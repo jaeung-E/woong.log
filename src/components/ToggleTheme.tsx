@@ -1,25 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { updateStorage } from "@utils/storage";
 import { ReactComponent as Moon } from "@icon/dark_mode.svg";
 import { ReactComponent as Sun } from "@icon/light_mode.svg";
-import { getTheme } from "@utils/theme";
 
 function ToggleTheme() {
   const [toggle, setToggle] = useState(false);
-
-  useEffect(() => {
-    const theme = getTheme();
-    const $html = document.documentElement;
-
-    if (theme === "dark") {
-      setToggle(true);
-      $html.classList.add("dark");
-    } else {
-      $html.classList.remove("dark");
-    }
-
-    updateStorage("theme", theme);
-  }, []);
 
   const handleToggle = () => {
     document.documentElement.classList.toggle("dark");

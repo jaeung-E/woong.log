@@ -37,6 +37,9 @@ module.exports = {
               },
             },
             blockquote: {
+              code: {
+                color: "black",
+              },
               borderLeftColor: theme("colors.blue[400]"),
               "p:first-of-type::before": {
                 content: "none",

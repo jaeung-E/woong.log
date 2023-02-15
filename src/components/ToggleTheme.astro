@@ -1,0 +1,59 @@
+---
+import { ReactComponent as Moon } from "@icon/dark_mode.svg";
+import { ReactComponent as Sun } from "@icon/light_mode.svg";
+---
+
+<div
+  id="toggle"
+  class="flex items-center p-0.5 cursor-pointer w-16 h-7 rounded-full dark:bg-black bg-blue-400"
+>
+  <div id="toggle-circle" class="invisible w-6 h-6 bg-white rounded-full"></div>
+</div>
+
+<script>
+  import { updateStorage } from "@utils/storage";
+
+  const $html = document.documentElement;
+  const $toggle = document.querySelector("#toggle");
+  const $circle = $toggle?.querySelector("#toggle-circle");
+  let isDark = $html.classList.contains("dark");
+
+  if (isDark) {
+    $circle?.classList.add("dark");
+  }
+
+  $circle?.classList.remove("invisible");
+  $toggle?.addEventListener("click", handleToggle);
+
+  function handleToggle() {
+    if ($circle) {
+      if (!$circle.classList.contains("duration-300")) {
+        $circle.classList.add("duration-300");
+      }
+
+      if (isDark) {
+        $circle.classList.add("light");
+        $circle.classList.remove("dark");
+      } else {
+        $circle.classList.add("dark");
+        $circle.classList.remove("light");
+      }
+
+      isDark = !isDark;
+      $html.classList.toggle("dark");
+      updateStorage("theme", isDark ? "dark" : "");
+    }
+  }
+</script>
+
+<style>
+  .light {
+    transform: translateX(0);
+    background-color: white;
+  }
+
+  .dark {
+    transform: translateX(calc(100% + 0.75rem));
+    background-color: white;
+  }
+</style>

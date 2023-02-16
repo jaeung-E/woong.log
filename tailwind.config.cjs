@@ -22,6 +22,7 @@ module.exports = {
             "--tw-prose-quotes": "rgb(var(--color-text-body))",
             h1: {
               paddingTop: "5rem",
+              marginBottom: "1rem !important",
             },
             code: {
               margin: "0.2rem",
@@ -53,6 +54,9 @@ module.exports = {
               "&:hover": {
                 color: theme("colors.blue[400]"),
               },
+            },
+            hr: {
+              margin: "0 0 2rem 0 !important",
             },
           },
         },

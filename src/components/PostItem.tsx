@@ -12,20 +12,20 @@ function PostItem({ post }: Props) {
     <div className="py-4 transition-colors duration-300 hover:text-blue-400">
       <a href={`/posts/${slug}`}>
         <div className="grid grid-cols-12">
-          <div className="hidden md:block md:col-span-3 md:row-span-2">
+          <div className="max-md:h-72 col-span-12 md:col-span-3 md:row-span-2">
             <img
               src={`${thumbnail}`}
               alt="thumbnail"
               className="object-cover w-full h-full"
             />
           </div>
-          <div className="flex items-end col-start-1 col-span-9 md:col-start-5 md:col-span-6">
-            <h1 className="text-4xl md:text-2xl font-bold">{title}</h1>
-          </div>
-          <div className="flex items-end justify-end col-span-3 md:col-span-2 pr-3">
-            <span className="text-sm !text-gray-400">
-              {createDate.toLocaleDateString("ko-KR")}
-            </span>
+          <div className="max-md:mt-10 col-span-12 md:col-start-5 md:col-span-8">
+            <div className="flex items-end justify-between">
+              <h1 className="text-4xl md:text-2xl font-bold">{title}</h1>
+              <span className="text-sm !text-gray-400 md:pr-3">
+                {createDate.toLocaleDateString("ko-KR")}
+              </span>
+            </div>
           </div>
           <div className="col-span-12 md:col-start-5 md:col-span-9 py-4">
             <p className="break-words overflow-hidden h-24 md:h-12 !text-gray-400">

@@ -28,14 +28,31 @@ import { ReactComponent as Sun } from "@icon/light_mode.svg";
   $toggle?.addEventListener("click", handleToggle);
 
   function handleToggle() {
+    const iframe = document.querySelector(
+      "iframe.giscus-frame"
+    ) as HTMLIFrameElement;
+    const theme = isDark ? "" : "dark";
+    const giscusTheme = isDark ? "light" : "dark_high_contrast";
+
     if ($circle) {
       if (!$circle.classList.contains("duration-300")) {
         $circle.classList.add("duration-300");
       }
 
-      isDark = !isDark;
+      if (iframe.contentWindow) {
+        iframe?.contentWindow.postMessage(
+          {
+            giscus: {
+              setConfig: { theme: giscusTheme },
+            },
+          },
+          "https://giscus.app"
+        );
+      }
+
       $html.classList.toggle("dark");
-      updateStorage("theme", isDark ? "dark" : "");
+      updateStorage("theme", theme);
+      isDark = !isDark;
     }
   }
 </script>

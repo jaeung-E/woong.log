@@ -17,4 +17,8 @@
     background-color: theme("colors.bg.body");
     color: theme("colors.text.body");
   }
+
+  .giscus {
+    margin-top: 10rem;
+  }
 }

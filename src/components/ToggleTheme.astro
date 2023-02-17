@@ -39,7 +39,7 @@ import { ReactComponent as Sun } from "@icon/light_mode.svg";
         $circle.classList.add("duration-300");
       }
 
-      if (iframe.contentWindow) {
+      if (iframe?.contentWindow) {
         iframe?.contentWindow.postMessage(
           {
             giscus: {

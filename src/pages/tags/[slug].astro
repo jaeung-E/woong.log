@@ -28,7 +28,7 @@ const filterPosts = await getCollection("post", ({ data }) => {
 });
 ---
 
-<Layout title={selectedTag}>
+<Layout title={`${selectedTag} | Woong.log`}>
   <TagList tags={allTags} selectedTag={selectedTag} isActivate />
   <PostList posts={filterPosts} />
 </Layout>

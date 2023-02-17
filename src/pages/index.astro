@@ -8,7 +8,7 @@ const postEntries = await getCollection("post");
 const allTags = [...new Set(postEntries.flatMap((entry) => entry.data.tags))];
 ---
 
-<Layout title="Post List">
+<Layout title="Woong.log">
   <TagList tags={allTags} isActivate />
   <PostList posts={postEntries} />
 </Layout>

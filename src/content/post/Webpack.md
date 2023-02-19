@@ -1,0 +1,127 @@
+---
+id: 3
+title: Webpack
+description: 웹팩에 대해 알아보자.
+thumbnail: /assets/image/Webpack/thumbnail.png
+tags: ["TIL"]
+createDate: 2021-11-24
+---
+
+# 웹팩이 뭘까?
+
+---
+
+**웹팩(Webpack)** 은 여러 개의 `JavaScript`와 `JSON` 파일들을 하나의 파일로 만들어주는 모듈 번들러이다.
+
+웹팩을 사용하면 의존 관계에 있는 여러 `JavaScript` 모듈을 묶어서 하나의 파일로 만들어 주기 때문에, `ES6`의 `import/export`를 지원하지 않는 **구형 브라우저에서도 모듈 기능의 사용을 가능하게 만들어주기도 한다.**
+
+그리고 **loader** 를 통해 `JavaScript`와 `JSON` 이 아닌 파일들도 모듈로 번들링이 가능하며, 단지 모듈들을 하나로 합치는 것 외에도 이미지를 data URL로 바꾸는 등 각종 자동화 및 최적화 기능도 지원해준다.
+
+# 웹팩 기본 개념
+
+---
+
+웹팩을 사용하기 위한 기본 개념은 크게 아래와 같다.
+
+- **Entry(엔트리)**
+- **Output(아웃풋)**
+- **Loaders(로더)**
+- **Plugins(플러그인)**
+
+각 항목이 어떤 기능을 하는지 한 번 알아보자!
+
+## Entry(엔트리)
+
+웹팩은 모듈을 번들링 할 때, **`Entry Point`가 의존하고 있는 여러 모듈들을 하나로 번들링 한다.**
+
+기본값으로 `./src/index.js`를 `Entry Point`로 하며, 설정파일에서 아래와 같이 `entry` 속성을 통해 `Entry Point`를 변경할 수 있다.
+
+```javascript
+module.exports = {
+  entry: "./[directory]/[entrySource]",
+};
+```
+
+예를 들어 아래와 같은 구조에서 `main.js`가 `sum.js`를 의존하고 있다고 해보자.
+
+> _js_ <br> |- **main.js** <br> |- **sum.js**<br>**webpack.config.js**
+
+![](https://images.velog.io/images/jaeung5169/post/b671510e-e6a6-45fb-a5eb-412a4a401528/image.png)
+
+이 때 `Entry Point`는 `main.js`가 되고, 설정은 다음과 같다.
+
+**webpack.config.js**
+
+```javascript
+module.exports = {
+  entry: "./js/main.js",
+};
+```
+
+이 외에도 여러개의 `Entry Point`를 지정할 수 있다. 보다 자세한 내용은 [Entry Points | 웹팩](https://webpack.kr/concepts/entry-points/)을 참고하자!
+
+## Output(아웃풋)
+
+**Output(아웃풋)** 은 단어 그대로 모듈이 번들링한 결과물을 어느곳에 출력할건지 웹팩에게 알려주는 역할을 한다.
+
+```javascript
+const path = require("path");
+
+module.exports = {
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist", "js"),
+  },
+};
+```
+
+`filename` 속성은 번들링된 파일의 이름을 정하는 속성이고, `path`는 해당 파일이 저장될 디렉터리를 명시해준다.
+
+또한, `path` 속성은 반드시 **절대 경로**로 설정해야 하니 이 점에 주의하도록 하자!
+
+## Loader(로더)
+
+위에도 적어놓았지만, 웹팩은 기본적으로 **`Javascript`와 `JSON` 파일만을 모듈로 인식한다.**
+
+하지만 웹팩은 번들링을 진행하는 과정에서 모듈을 불러올때 **Loader(로더)** 를 이용해서 전처리가 가능한데, 이것 덕분에 **`.css`와 `.ts` 등의 파일들도 모듈로 이용이 가능**하며 파일을 로드할때 로더에 `babel`을 등록해서 트랜스파일링을 진행하는등 다양한 작업이 가능하다.
+
+예를 들어 `.css` 확장자를 가진 파일을 번들링 하기 위해 `css-loader`를 적용한다고 해보자. `css-loader`는 `css` 파일도 모듈에 포함시키기 위해 사용하는 로더이다.
+
+```javascript
+module.exports = {
+  module: {
+    rules: [{ test: /\.css$/, use: "css-loader" }],
+  },
+};
+```
+
+위처럼 `module.rules` 속성 안에 어떻게 로더를 적용할지 작성한다. `test` 속성에는 **정규표현식**을 이용해 어떤 파일에 적용할지 규칙을 명시해주고, `use` 속성에는 적용할 로더를 지정해주게 된다.
+
+또한, Loader는 **체이닝 기능을 지원해서 하나의 `test` 속성에 여러 개의 `loader`를 지정할 수 있다.** 예제로 `css-loader`를 통해 번들링 된 `css`를 실제로 적용하기 위해 `style-loader`를 체이닝 시킨다고 해보자.
+
+```javascript
+module.exports = {
+  module: {
+    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }],
+  },
+};
+```
+
+`use` 속성을 배열 리터럴로 변경하고 적용할 Loader를 지정해주면 된다. 다만 **오른쪽에서부터 왼쪽으로 순서대로 적용**된다는 점에 주의하도록 하자!
+
+## Plugin(플러그인)
+
+Loader가 모듈을 로드할 때 전처리를 담당했다면, **Plugin은 번들링 된 결과물을 최적화 하거나 가공하는 역할을 한다.**
+
+예제로 번들링된 결과물을 포함하는 `html` 파일을 생성해주는 `html-webpack-plugin`을 적용해보도록 하자.
+
+```javascript
+const htmlWebpackPlugin = require("html-webpack-plugin");
+const htmlWebpackPluginOption = { template: "./html/main.html" };
+
+module.exports = {
+  plugins: [new htmlWebpackPlugin(htmlWebpackPluginOption)],
+};
+```
+
+보다시피 `plugin`은 `plugins` 속성 안에 배열 형태로 추가하게 되며, 반드시 `new` 연산자를 이용해 **생성자 함수로 생성한 인스턴스**를 추가해야 한다.

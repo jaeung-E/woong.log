@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import TagList from "@components/TagList.astro";
 import Giscus from "@components/Giscus.astro";
+import MetaData from "@layouts/MetaData.astro";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("post");
@@ -14,11 +15,16 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, tags, createDate } = entry.data;
+const { title, description, tags, createDate } = entry.data;
 const { Content } = await entry.render();
 ---
 
-<Layout title={`${title} | Woong.log`}>
+<Layout>
+  <MetaData
+    title={`${title} | Woong.log`}
+    description={description}
+    slot="meta"
+  />
   <div
     class="flex flex-col gap-12 justify-between min-h-[13rem] p-4 border-b mb-24"
   >

@@ -3,6 +3,7 @@ import { CollectionEntry, getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import TagList from "@components/TagList.astro";
 import PostList from "@components/PostList";
+import MetaData from "@layouts/MetaData.astro";
 
 interface Props {
   postEntries: CollectionEntry<"post">[];
@@ -28,7 +29,12 @@ const filterPosts = await getCollection("post", ({ data }) => {
 });
 ---
 
-<Layout title={`${selectedTag} | Woong.log`}>
+<Layout>
+  <MetaData
+    title={`${selectedTag} | Woong.log`}
+    description={`${selectedTag} Posts`}
+    slot="meta"
+  />
   <TagList tags={allTags} selectedTag={selectedTag} isActivate />
   <PostList posts={filterPosts} />
 </Layout>

@@ -2,7 +2,7 @@
 id: 1
 title: 블로그 개발 후기
 description: 드디어 갖게된 진짜 개인 블로그. 의 첫 포스팅
-thumbnail: /assets/image/블로그_개발_후기/thumbnail.jpeg
+thumbnail: /assets/image/blog-development-review/thumbnail.jpeg
 tags: ["후기"]
 createDate: 2023-02-19
 ---
@@ -54,7 +54,7 @@ createDate: 2023-02-19
 
 그렇다고 장점만 있는 것은 아닌데, 아래처럼 `event handler`를 `DOM` 조작을 통해 부착해야 한다는 건 조금 불편하긴 했다.
 
-![](/assets/image/블로그_개발_후기/nodap_event.png)
+![](/assets/image/blog-development-review/nodap_event.png)
 
 하지만 사용하면서 좋다고 느낀 점이 더 많았으니 OK.
 
@@ -78,21 +78,21 @@ Astro를 이용한 빠른 개발에는 `tailwind`도 한 몫 했던 것 같다.
 
 테마를 변경할 수 있는 `ToggleTheme` 컴포넌트를 구현하고, 상태가 변경될 때 마다 localStorage에 적절한 값을 저장해서 페이지 초기 진입 시 해당 테마를 적용하려고 했다.
 
-![](/assets/image/블로그_개발_후기/digging_theme.png)
+![](/assets/image/blog-development-review/digging_theme.png)
 
 이 때, SSR 시점에는 `window` 객체를 참조할 수 없기 때문에 에러가 발생했고, 이를 해결하려고 위 처럼 `useEffect` 안에서 해당 코드를 실행하도록 했다.
 
 그랬더니 다음처럼 페이지를 불러올 때 마다, 마치 `FOUC` 같은 현상이 생기게 되었다.
 
-![](/assets/image/블로그_개발_후기/FOUC_YOU.gif)
+![](/assets/image/blog-development-review/FOUC_YOU.gif)
 
 이는 `useEffect`가 SSR에 의해 페이지가 로드되고, 이후 컴포넌트가 마운트 된 뒤에 실행되기 때문이라고 생각했다.
 
 그래서 아래처럼 초기 테마를 적용하는 코드를 컴포넌트에서 분리시키고, `head`에서 해당 스크립트를 먼저 실행하게끔 변경해서 해결했다.
 
-![](/assets/image/블로그_개발_후기/theme_script_1.png)
+![](/assets/image/blog-development-review/theme_script_1.png)
 
-![](/assets/image/블로그_개발_후기/theme_script_2.png)
+![](/assets/image/blog-development-review/theme_script_2.png)
 
 # 끝으로
 

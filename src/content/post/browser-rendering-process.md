@@ -2,7 +2,7 @@
 id: 2
 title: 브라우저의 동작 과정
 description: 대충 브라우저가 어떻게 동작하는지 한 번 알아보는 포스트
-thumbnail: /assets/image/브라우저의_동작_과정/1.png
+thumbnail: /assets/image/browser-rendering-process/1.png
 tags: ["TIL"]
 createDate: 2022-03-22
 ---
@@ -38,7 +38,7 @@ createDate: 2022-03-22
 
 두 모델은 모두 아래처럼 트리 구조로 되어있다.
 
-![](/assets/image/브라우저의_동작_과정/1.png)
+![](/assets/image/browser-rendering-process/1.png)
 
 ## 렌더 트리(Render tree) 생성
 
@@ -46,7 +46,7 @@ createDate: 2022-03-22
 
 `script` 혹은 `meta` 태그처럼 **렌더링에 반영되지 않는 노드들은 렌더 트리에서 생략**되며, **`CSS`에 의해 숨겨진 노드 또한 생략**된다.
 
-![](/assets/image/브라우저의_동작_과정/2.png)
+![](/assets/image/browser-rendering-process/2.png)
 
 위의 그림을 보면 `p` 노드의 하위에 있던 `span` 노드가 `CSS`의 `display:none` 속성에 의해 렌더 트리에서 생략된 것을 볼 수 있다.
 

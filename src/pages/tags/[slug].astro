@@ -33,6 +33,7 @@ const filterPosts = await getCollection("post", ({ data }) => {
   <MetaData
     title={`${selectedTag} | Woong.log`}
     description={`${selectedTag} Posts`}
+    imagePath="/assets/image/og_main_thumbnail.jpg"
     slot="meta"
   />
   <TagList tags={allTags} selectedTag={selectedTag} isActivate />

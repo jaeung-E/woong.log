@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, description, tags, createDate } = entry.data;
+const { title, description, thumbnail, tags, createDate } = entry.data;
 const { Content } = await entry.render();
 ---
 
@@ -23,6 +23,7 @@ const { Content } = await entry.render();
   <MetaData
     title={`${title} | Woong.log`}
     description={description}
+    imagePath={thumbnail}
     slot="meta"
   />
   <div

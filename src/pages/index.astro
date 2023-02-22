@@ -10,7 +10,12 @@ const allTags = [...new Set(postEntries.flatMap((entry) => entry.data.tags))];
 ---
 
 <Layout>
-  <MetaData title="Woong.log" description="개발 기록 공간" slot="meta" />
+  <MetaData
+    title="Woong.log"
+    description="개발 기록 공간"
+    imagePath="/assets/image/og_main_thumbnail.jpg"
+    slot="meta"
+  />
   <TagList tags={allTags} isActivate />
   <PostList posts={postEntries} />
 </Layout>

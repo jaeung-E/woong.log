@@ -22,20 +22,19 @@ export async function getStaticPaths() {
 
 const { postEntries } = Astro.props;
 const allTags = [...new Set(postEntries.flatMap((entry) => entry.data.tags))];
-const { pathname } = new URL(Astro.request.url);
-const selectedTag = decodeURI(pathname.split("/")[2]);
+const { slug } = Astro.params;
 const filterPosts = await getCollection("post", ({ data }) => {
-  return data.tags.includes(selectedTag);
+  return data.tags.includes(`${slug}`);
 });
 ---
 
 <Layout>
   <MetaData
-    title={`${selectedTag} | Woong.log`}
-    description={`${selectedTag} Posts`}
+    title={`${slug} | Woong.log`}
+    description={`${slug} Posts`}
     imagePath="/assets/image/og_main_thumbnail.jpg"
     slot="meta"
   />
-  <TagList tags={allTags} selectedTag={selectedTag} isActivate />
+  <TagList tags={allTags} selectedTag={slug} isActivate />
   <PostList posts={filterPosts} />
 </Layout>

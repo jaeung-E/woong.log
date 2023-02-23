@@ -32,6 +32,7 @@ function TagItem({ name, isSelected = false, isActivate = false }: Props) {
           {isSelected && (
             <button
               onClick={handleClick}
+              aria-label="Close Tag"
               className="ml-1 -mr-2 opacity-30 hover:opacity-100"
             >
               <CloseIcon />

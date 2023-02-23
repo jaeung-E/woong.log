@@ -21,11 +21,11 @@ export async function getStaticPaths() {
 }
 
 const { postEntries } = Astro.props;
-const allTags = [...new Set(postEntries.flatMap((entry) => entry.data.tags))];
 const { slug } = Astro.params;
-const filterPosts = await getCollection("post", ({ data }) => {
-  return data.tags.includes(`${slug}`);
-});
+const allTags = [...new Set(postEntries.flatMap((entry) => entry.data.tags))];
+const filterPosts = postEntries.filter((entry) =>
+  entry.data.tags.includes(`${slug}`)
+);
 ---
 
 <Layout>

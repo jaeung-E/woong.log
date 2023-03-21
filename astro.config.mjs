@@ -7,10 +7,13 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://blog.jaeung.codes",
-  integrations: [react(), tailwind()],
+  integrations: [react(), tailwind(), sitemap()],
   vite: {
-    plugins: [svgr()],
-  },
+    plugins: [svgr()]
+  }
 });

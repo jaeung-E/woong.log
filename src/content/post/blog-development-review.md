@@ -1,6 +1,6 @@
 ---
 id: 1
-title: 블로그 개발 후기
+title: Astro 블로그 개발 후기
 description: 드디어 갖게된 진짜 개인 블로그. 의 첫 포스팅
 thumbnail: /assets/image/blog-development-review/thumbnail.jpeg
 tags: ["후기"]

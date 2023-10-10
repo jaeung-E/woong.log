@@ -22,7 +22,7 @@ function PostItem({ post }: Props) {
           <div className="max-md:mt-10 col-span-12 md:col-start-5 md:col-span-8">
             <div className="flex items-end justify-between">
               <h1 className="text-4xl md:text-2xl font-bold">{title}</h1>
-              <span className="text-sm !text-gray-400 md:pr-3">
+              <span className="text-sm !text-gray-400 md:pr-3 min-w-fit">
                 {createDate.toLocaleDateString("ko-KR")}
               </span>
             </div>

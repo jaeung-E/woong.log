@@ -13,7 +13,7 @@ function PostList({ posts }: Props) {
   );
 
   return (
-    <div className="max-md:px-4 divide-y divide-solid divide-slate-300 mt-12">
+    <div className="max-md:px-4 divide-y divide-solid divide-slate-300 mt-12 dark:divide-slate-400">
       {sortedPosts.map((post) => (
         <PostItem post={post} key={post.data.id} />
       ))}

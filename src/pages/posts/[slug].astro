@@ -25,7 +25,7 @@ const { Content } = await entry.render();
     imagePath={thumbnail}
     slot="meta"
   />
-  <div class="flex flex-col gap-12 p-4 border-b mb-24">
+  <div class="flex flex-col gap-12 p-4 border-b mb-24 dark:border-slate-400">
     <h1 class="text-3xl md:text-4xl font-bold">{title}</h1>
     <div class="flex justify-between items-center">
       <span class="text-gray-400">
@@ -35,7 +35,7 @@ const { Content } = await entry.render();
   </div>
   <img src={thumbnail} alt="thumbnail" />
   <div
-    class="prose prose-sm md:prose-base max-w-none mt-12 px-4 md:px-0 prose-hr:my-4 prose-h1:mb-0"
+    class="prose prose-sm dark:prose-dark md:prose-base max-w-none mt-12 px-4 md:px-0 prose-hr:my-4 prose-h1:mb-0"
   >
     <Content />
   </div>

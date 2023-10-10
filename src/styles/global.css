@@ -9,9 +9,8 @@
   }
 
   .dark {
-    --color-bg-body: 56 56 56;
-    --color-text-body: 245 245 245;
-    --color-prose-body: 190 190 190;
+    --color-bg-body: 49 51 61;
+    --color-text-body: 148 163 184;
   }
 
   :root {

@@ -15,11 +15,6 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            "--tw-prose-body": "rgb(var(--color-prose-body))",
-            "--tw-prose-headings": "rgb(var(--color-text-body))",
-            "--tw-prose-links": "rgb(var(--color-text-body))",
-            "--tw-prose-bold": "rgb(var(--color-text-body))",
-            "--tw-prose-quotes": "rgb(var(--color-text-body))",
             h1: {
               paddingTop: "5rem",
               marginBottom: "1rem !important",
@@ -57,6 +52,33 @@ module.exports = {
             },
             hr: {
               margin: "0 0 2rem 0 !important",
+            },
+          },
+        },
+        dark: {
+          css: {
+            code: {
+              backgroundColor: theme("colors.slate[400]"),
+            },
+            h2: {
+              color: theme("colors.slate[400]"),
+            },
+            a: {
+              color: theme("colors.slate[400]"),
+              "&:hover": {
+                color: theme("colors.blue[400]"),
+              },
+            },
+            pre: {
+              code: {
+                backgroundColor: "rgba(0, 0, 0, 0)",
+              },
+            },
+            p: {
+              color: theme("colors.slate[400]"),
+            },
+            hr: {
+              borderColor: theme("colors.slate[400]"),
             },
           },
         },

@@ -1,0 +1,50 @@
+---
+id: 4
+title: yarn berry pnp모드에서 prisma generate가 실행되지 않는 문제
+description: pnp는 만능이 아니었다
+thumbnail: /assets/image/prisma-in-yarn-berry/thumbnail.png
+tags: ["TIL"]
+createDate: 2023-10-10
+---
+
+## prisma generate 오류
+
+---
+
+진행하고 있는 사이드 프로젝트에서 `Prisma`를 이용해 백엔드를 구현하고 있는데, `prisma generate` 명령 실행 시 아래처럼 오류가 발생했다.
+
+![](/assets/image/prisma-in-yarn-berry/prisma_generate_error.png)
+
+찾아보니 prisma는 schema.prisma 파일을 이용해서 PrismaClient 및 관련된 타입들을 생성하여 `node_modules/.prisma/client`에 저장하게 되는데, pnp 방식은 애초에 node_modules가 존재하지 않기 때문에 위와 같은 문제가 발생한 것 같았다.
+
+## output path 변경 및 pnpify 이용
+
+---
+
+문제를 해결하기 위해 먼저, yarn pnpify 패키지를 설치해주자. PnPify는 PnP를 지원하지 않는 프로젝트가 node_modules에 접근하려 하면, 호출을 가로채서 PnP API에 대한 호출로 변환시켜준다고 한다.
+
+`yarn add -D @yarnpkg/pnpify`
+
+다음은 generate의 결과를 default path에 저장하지 않도록, generator client의 `output` 속성을 이용해 경로를 변경시켜주자.
+
+```javascript
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+```
+
+마지막으로 generate가 진행되는 명령은 `yarn pnpify`를 이용하여 실행하면 된다.
+
+`yarn pnpify prisma generate`
+
+## 결론
+
+---
+
+yarn berry PnP모드는 기존 node_modules에 비해 장점이 많지만, 호환되지 않는 라이브러리도 여럿 있으니 주의하자.
+
+## 참고 자료
+
+- [Generating Prisma Client | Prisma](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-prismaclient/generating-prisma-client#generating-prisma-client-in-the-postinstall-hook-of-prismaclient)
+- [PnPify | Yarn](https://yarnpkg.com/advanced/pnpify)

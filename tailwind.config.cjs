@@ -60,7 +60,7 @@ module.exports = {
             code: {
               backgroundColor: theme("colors.slate[400]"),
             },
-            h2: {
+            "h2, h3": {
               color: theme("colors.slate[400]"),
             },
             a: {
@@ -79,6 +79,9 @@ module.exports = {
             },
             hr: {
               borderColor: theme("colors.slate[400]"),
+            },
+            strong: {
+              color: theme("colors.slate[400]"),
             },
           },
         },

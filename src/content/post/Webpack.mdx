@@ -6,7 +6,7 @@ thumbnail: /assets/image/Webpack/thumbnail.png
 createDate: 2021-11-24
 ---
 
-# 웹팩이 뭘까?
+## 웹팩이 뭘까?
 
 ---
 
@@ -16,7 +16,7 @@ createDate: 2021-11-24
 
 그리고 **loader** 를 통해 `JavaScript`와 `JSON` 이 아닌 파일들도 모듈로 번들링이 가능하며, 단지 모듈들을 하나로 합치는 것 외에도 이미지를 data URL로 바꾸는 등 각종 자동화 및 최적화 기능도 지원해준다.
 
-# 웹팩 기본 개념
+## 웹팩 기본 개념
 
 ---
 
@@ -29,7 +29,7 @@ createDate: 2021-11-24
 
 각 항목이 어떤 기능을 하는지 한 번 알아보자!
 
-## Entry(엔트리)
+### Entry(엔트리)
 
 웹팩은 모듈을 번들링 할 때, **`Entry Point`가 의존하고 있는 여러 모듈들을 하나로 번들링 한다.**
 
@@ -64,7 +64,7 @@ module.exports = {
 
 이 외에도 여러개의 `Entry Point`를 지정할 수 있다. 보다 자세한 내용은 [Entry Points | 웹팩](https://webpack.kr/concepts/entry-points/)을 참고하자!
 
-## Output(아웃풋)
+### Output(아웃풋)
 
 **Output(아웃풋)** 은 단어 그대로 모듈이 번들링한 결과물을 어느곳에 출력할건지 웹팩에게 알려주는 역할을 한다.
 
@@ -83,7 +83,7 @@ module.exports = {
 
 또한, `path` 속성은 반드시 **절대 경로**로 설정해야 하니 이 점에 주의하도록 하자!
 
-## Loader(로더)
+### Loader(로더)
 
 위에도 적어놓았지만, 웹팩은 기본적으로 **`Javascript`와 `JSON` 파일만을 모듈로 인식한다.**
 
@@ -113,7 +113,7 @@ module.exports = {
 
 `use` 속성을 배열 리터럴로 변경하고 적용할 Loader를 지정해주면 된다. 다만 **오른쪽에서부터 왼쪽으로 순서대로 적용**된다는 점에 주의하도록 하자!
 
-## Plugin(플러그인)
+### Plugin(플러그인)
 
 Loader가 모듈을 로드할 때 전처리를 담당했다면, **Plugin은 번들링 된 결과물을 최적화 하거나 가공하는 역할을 한다.**
 

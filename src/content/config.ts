@@ -6,7 +6,6 @@ const postCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     thumbnail: z.string().optional(),
-    tags: z.array(z.string()),
     createDate: z.date(),
   }),
 });

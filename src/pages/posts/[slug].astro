@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import TagList from "@components/TagList.astro";
 import Giscus from "@components/Giscus.astro";
 import MetaData from "@layouts/MetaData.astro";
 
@@ -15,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { title, description, thumbnail, tags, createDate } = entry.data;
+const { title, description, thumbnail, createDate } = entry.data;
 const { Content } = await entry.render();
 ---
 
@@ -31,7 +30,6 @@ const { Content } = await entry.render();
   >
     <h1 class="text-3xl md:text-4xl font-bold">{title}</h1>
     <div class="flex justify-between items-center">
-      <TagList tags={tags} isActivate class="!justify-start" />
       <span class="text-gray-400">
         {createDate.toLocaleDateString("ko-KR")}
       </span>

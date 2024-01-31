@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 
 export default defineConfig({
-  site: "https://blog.jaeung.codes",
+  site: "https://blog.mckee.codes",
   integrations: [react(), tailwind(), mdx(), sitemap()],
   vite: {
     plugins: [svgr()],

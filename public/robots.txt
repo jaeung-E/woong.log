@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blog.jaeung.codes/sitemap-index.xml
+Sitemap: https://blog.mckee.codes/sitemap-index.xml
